@@ -1,0 +1,14 @@
+<p>
+  forum works!
+</p>
+<div *ngFor="let item of data">
+  <ng-container [ngSwitch]="state">
+    <div *ngSwitchCase="'category'">
+      <label (click)="loadPosts(item.id)">category {{item.title}}</label>
+    </div>
+    <div *ngSwitchCase="'posts'">
+      <a [routerLink]="['/post', item.id]">post {{item.name}}</a>
+    </div>
+  </ng-container>
+</div>
+
