@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ForumService} from '../../service/forum.service';
 import {CategoryModel} from './category.model';
-import {PostsModel} from './posts.model';
 
 type ForumComponentType = 'category' | 'posts';
 

@@ -1,14 +1,13 @@
-export interface PostModel {
-  id: number;
+import {BasicModel} from '../../../shared/model/basic.model';
+
+export interface CommentModel extends BasicModel {
   datetime: string;
   name: string;
   body: string;
-  comments: [
-    {
-      id: number;
-      datetime: string;
-      name: string;
-      body: string;
-    }
-    ];
 }
+
+export interface PostModel extends CommentModel {
+  comments: CommentModel[];
+}
+
+

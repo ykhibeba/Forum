@@ -4,16 +4,14 @@ import {Observable} from 'rxjs';
 
 import {CategoryModel} from '../components/forum/category.model';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({providedIn: 'root'})
 export class ForumService {
-  private forumUrl = 'http://192.168.88.27:3000/api/forumanon';
 
   constructor(private http: HttpClient) {
   }
 
   getCatalogs(): Observable<CategoryModel[]> {
-    return this.http.get<CategoryModel[]>(this.forumUrl);
+    return this.http.get<CategoryModel[]>('forumanon');
   }
+
 }
