@@ -12,11 +12,11 @@ export class ForumService {
   }
 
   getCategorys(): Observable<CategoryModel[]> {
-    return this.http.get<CategoryModel[]>('forumanon');
+    return this.http.get<CategoryModel[]>('/api/forum');
   }
 
   getPosts(categoryId: number): Observable<PostsModel[]> {
-    return this.http.get<PostsModel[]>('forumanon');
+    return this.http.get<PostsModel[]>('/api/forum');
   }
 
 }
