@@ -11,18 +11,20 @@ type ForumComponentType = 'category' | 'posts';
 })
 export class ForumComponent implements OnInit {
 
-  data: CategoryModel[];
+  data: any;
   state: ForumComponentType = 'category';
 
   constructor(private forumService: ForumService) {
   }
 
   ngOnInit() {
-    this.forumService.getCatalogs()
+    this.forumService.getCategorys()
       .subscribe(data => this.data = data);
   }
 
   loadPosts(categoryId: number): void {
     this.state = 'posts';
+    this.forumService.getPosts(categoryId)
+      .subscribe(data => this.data = data);
   }
 }

@@ -1,0 +1,5 @@
+{
+  "/api/forum": "/categories",
+  "/api/forum/:category": "/posts_:category",
+  "/api/forum/:category/:post": "/post_:category/:post"
+}

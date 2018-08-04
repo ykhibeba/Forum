@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 
 import {CategoryModel} from '../components/forum/category.model';
+import {PostsModel} from '../components/forum/posts.model';
 
 @Injectable({providedIn: 'root'})
 export class ForumService {
@@ -10,8 +11,12 @@ export class ForumService {
   constructor(private http: HttpClient) {
   }
 
-  getCatalogs(): Observable<CategoryModel[]> {
+  getCategorys(): Observable<CategoryModel[]> {
     return this.http.get<CategoryModel[]>('forumanon');
+  }
+
+  getPosts(categoryId: number): Observable<PostsModel[]> {
+    return this.http.get<PostsModel[]>('forumanon');
   }
 
 }

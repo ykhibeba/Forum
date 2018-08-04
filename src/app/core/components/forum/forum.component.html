@@ -7,7 +7,7 @@
       <label (click)="loadPosts(item.id)">category {{item.title}}</label>
     </div>
     <div *ngSwitchCase="'posts'">
-      <a [routerLink]="['/post', item.id]">post {{item.name}}</a>
+      <a [routerLink]="['/post', item.id]">post {{item.title}}</a>
     </div>
   </ng-container>
 </div>
