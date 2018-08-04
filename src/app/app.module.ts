@@ -9,7 +9,7 @@ import {PostComponent} from './core/components/post/post.component';
 import {LoginComponent} from './core/components/login/login.component';
 import {PageNotFoundComponent} from './core/components/page-not-found/page-not-found.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatListModule} from '@angular/material';
+import {MatIconModule, MatListModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -24,7 +24,8 @@ import {MatListModule} from '@angular/material';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatListModule
+    MatListModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
