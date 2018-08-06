@@ -16,7 +16,7 @@ export class ForumService {
   }
 
   getPosts(categoryId: number): Observable<PostsModel[]> {
-    return this.http.get<PostsModel[]>('/api/forum');
+    return this.http.get<PostsModel[]>(`${'/api/forum'}/${categoryId}`);
   }
 
 }

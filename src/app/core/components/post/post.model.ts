@@ -7,6 +7,7 @@ export interface CommentModel extends BasicModel {
 }
 
 export interface PostModel extends CommentModel {
+  title: string;
   comments: CommentModel[];
 }
 
