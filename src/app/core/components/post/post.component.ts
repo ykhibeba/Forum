@@ -7,6 +7,7 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./post.component.scss']
 })
 export class PostComponent implements OnInit {
+
   id: number;
 
   constructor(private route: ActivatedRoute) {
@@ -15,6 +16,7 @@ export class PostComponent implements OnInit {
   }
 
   ngOnInit() {
+    // TODO load data
   }
 
 }
