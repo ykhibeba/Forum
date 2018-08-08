@@ -7,18 +7,20 @@ import {MatToolbarModule, MatSidenavModule, MatIconModule, MatListModule, MatBut
 
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app.router';
-import {ForumComponent} from './core/components/forum/forum.component';
+import {CategoriesComponent} from './core/components/categories/categories.component';
 import {PostComponent} from './core/components/post/post.component';
 import {LoginComponent} from './core/components/login/login.component';
 import {PageNotFoundComponent} from './core/components/page-not-found/page-not-found.component';
+import { PostsComponent } from './core/components/posts/posts.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ForumComponent,
+    CategoriesComponent,
     PostComponent,
     LoginComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    PostsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,14 @@
-<p>
-  post works!
-  {{id}}
-</p>
-<button [routerLink]="['/forum']">TO ROZDEL</button>
+<mat-card>
+  <mat-card-title>{{post.title}}</mat-card-title>
+  <mat-card-content>{{post.body}}</mat-card-content>
+  <mat-card-footer>
+    {{post.name}}: {{post.datetime}}
+  </mat-card-footer>
+</mat-card>
+<mat-card><mat-card-title>Comments</mat-card-title></mat-card>
+<mat-card *ngFor="let comment of post.comments">
+  <mat-card-content>{{comment.body}}</mat-card-content>
+  <mat-card-footer>
+    {{comment.name}}: {{comment.datetime}}
+  </mat-card-footer>
+</mat-card>

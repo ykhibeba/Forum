@@ -2,14 +2,16 @@ import {RouterModule, Routes} from '@angular/router';
 import {NgModule} from '@angular/core';
 import {LoginComponent} from './core/components/login/login.component';
 import {PageNotFoundComponent} from './core/components/page-not-found/page-not-found.component';
-import {ForumComponent} from './core/components/forum/forum.component';
+import {CategoriesComponent} from './core/components/categories/categories.component';
+import {PostsComponent} from './core/components/posts/posts.component';
 import {PostComponent} from './core/components/post/post.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'forum', pathMatch: 'full'},
+  {path: '', redirectTo: 'api/forum', pathMatch: 'full'},
+  {path: 'api/forum', component: CategoriesComponent},
+  {path: 'api/forum/:categoryId', component: PostsComponent},
+  {path: 'api/forum/:categoryId/:postId', component: PostComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'forum', component: ForumComponent},
-  {path: 'post/:id', component: PostComponent},
   {path: '**', component: PageNotFoundComponent}
 ];
 

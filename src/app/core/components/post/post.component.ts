@@ -1,5 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
+import {ForumService} from '../../service/forum.service';
+
+import {BasicModel} from '../../../shared/model/basic.model';
+import {PostModel} from './post.model';
 
 @Component({
   selector: 'app-post',
@@ -8,15 +12,26 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class PostComponent implements OnInit {
 
-  id: number;
+  categoryId: number;
+  postId: number;
+  post: PostModel;
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private forumService: ForumService,
+              private route: ActivatedRoute,
+              private router: Router) {
     this.route.params
-      .subscribe((params: { id: string }) => this.id = parseInt(params.id, 10));
+      .subscribe((params: { categoryId: string, postId: string }) => {
+        this.categoryId = parseInt(params.categoryId, 10);
+        this.postId = parseInt(params.postId, 10);
+      });
   }
 
   ngOnInit() {
-    // TODO load data
+    this.loadPost(this.categoryId, this.postId);
   }
 
+  private loadPost(categoryId: number, postId: number): void {
+    this.forumService.getPost(categoryId, postId)
+      .subscribe(data => this.post = data);
+  }
 }
