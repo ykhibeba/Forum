@@ -6,6 +6,12 @@
   </mat-card-footer>
 </mat-card>
 <mat-card><mat-card-title>Comments</mat-card-title></mat-card>
+<mat-card class="example-container">
+  <mat-form-field>
+    <textarea matInput placeholder="Comment"></textarea>
+  </mat-form-field>
+  <button mat-button>Add comment</button>
+</mat-card>
 <mat-card *ngFor="let comment of post.comments">
   <mat-card-content>{{comment.body}}</mat-card-content>
   <mat-card-footer>

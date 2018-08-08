@@ -1,0 +1,6 @@
+<mat-card *ngFor="let item of posts" (click)="loadPost(item)">
+  <mat-card-title>{{item.title}}</mat-card-title>
+  <mat-card-footer>
+    {{item.name}}: {{item.datetime}}
+  </mat-card-footer>
+</mat-card>
