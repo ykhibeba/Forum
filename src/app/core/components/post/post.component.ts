@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 import {ForumService} from '../../service/forum.service';
-
-import {BasicModel} from '../../../shared/model/basic.model';
 import {PostModel} from './post.model';
 
 @Component({
@@ -17,8 +15,7 @@ export class PostComponent implements OnInit {
   post: PostModel;
 
   constructor(private forumService: ForumService,
-              private route: ActivatedRoute,
-              private router: Router) {
+              private route: ActivatedRoute) {
     this.route.params
       .subscribe((params: { categoryId: string, postId: string }) => {
         this.categoryId = parseInt(params.categoryId, 10);
