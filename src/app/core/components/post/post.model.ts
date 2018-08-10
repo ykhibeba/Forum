@@ -1,8 +1,8 @@
-import {CommentModel} from '../comment/comment.model';
+import {ICommentModel} from '../comment/comment.model';
 
-export interface PostModel extends CommentModel {
+export interface PostModel extends ICommentModel {
   title: string;
-  comments: CommentModel[];
+  comments: ICommentModel[];
 }
 
 export class PostModelClass implements PostModel {
@@ -11,6 +11,6 @@ export class PostModelClass implements PostModel {
   datetime: string;
   name: string;
   body: string;
-  comments: CommentModel[];
+  comments: ICommentModel[];
 }
 

@@ -1,10 +1,32 @@
-<mat-card *ngFor="let comment of comments">
-  <mat-card-content>{{comment.body}}</mat-card-content>
-  <mat-card-footer class="control">
-    {{comment.name}}: {{comment.datetime}}
-    <div class="controlButtons">
-      <button mat-icon-button (click)="onEditComment(comment)"><mat-icon>edit</mat-icon></button>
-      <button mat-icon-button (click)="onDeleteComment(comment)"><mat-icon>delete</mat-icon></button>
-    </div>
-  </mat-card-footer>
-</mat-card>
+<ng-container *ngFor="let comment of comments" [ngSwitch]="comment.edit">
+  <mat-card *ngSwitchCase="true">
+    <mat-card-content>
+      <input #control [value]="comment.body"/>
+    </mat-card-content>
+    <mat-card-footer class="control">
+      {{comment.name}}: {{comment.datetime}}
+      <div class="controlButtons">
+        <button mat-icon-button (click)="onSave(comment, control.value)">
+          <mat-icon>Save</mat-icon>
+        </button>
+        <button mat-icon-button (click)="comment.edit = false">
+          <mat-icon>Cancel</mat-icon>
+        </button>
+      </div>
+    </mat-card-footer>
+  </mat-card>
+  <mat-card *ngSwitchCase="false">
+    <mat-card-content>{{comment.body}}</mat-card-content>
+    <mat-card-footer class="control">
+      {{comment.name}}: {{comment.datetime}}
+      <div class="controlButtons">
+        <button mat-icon-button (click)="comment.edit = true">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button (click)="onDeleteComment(comment)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </mat-card-footer>
+  </mat-card>
+</ng-container>

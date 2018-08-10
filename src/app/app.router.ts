@@ -7,10 +7,10 @@ import {PostsComponent} from './core/components/posts/posts.component';
 import {PostComponent} from './core/components/post/post.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'api/forum', pathMatch: 'full'},
-  {path: 'api/forum', component: CategoriesComponent},
-  {path: 'api/forum/:categoryId', component: PostsComponent},
-  {path: 'api/forum/:categoryId/:postId', component: PostComponent},
+  {path: '', redirectTo: 'forum', pathMatch: 'full'},
+  {path: 'forum', component: CategoriesComponent},
+  {path: 'forum/:categoryId', component: PostsComponent},
+  {path: 'forum/:categoryId/:postId', component: PostComponent},
   {path: 'login', component: LoginComponent},
   {path: '**', component: PageNotFoundComponent}
 ];

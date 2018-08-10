@@ -2,7 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {ForumService} from '../../service/forum.service';
 import {PostModelClass} from './post.model';
-import {CommentModel, CommentModelClass} from '../comment/comment.model';
+import {CommentModel, ICommentModel} from '../comment/comment.model';
+import {of} from 'rxjs';
 
 @Component({
   selector: 'app-post',
@@ -35,18 +36,22 @@ export class PostComponent implements OnInit {
   }
 
   private addComment(): void {
-    const comment = new CommentModelClass(this.comment);
+    const comment = new CommentModel(null, this.comment);
     this.forumService.postComment(this.categoryId, this.postId, comment)
       .subscribe(newComment => this.post.comments.push(newComment));
   }
 
-  private editComment(comment: CommentModel): void {
-    console.log(comment);
-    // this.forumService.postComment(this.categoryId, this.postId, this.comment);
+  saveComment(comment: ICommentModel): void {
+    this.forumService.postComment(this.categoryId, this.postId, comment)
+      .subscribe(() => {
+        this.post.comments.find(c => c.id === comment.id).body = comment.body;
+      });
   }
 
-  private deleteComment(comment: CommentModel): void {
-    // this.forumService.postComment(this.categoryId, this.postId, this.comment);
+  deleteComment(commentId: number): void {
+    of('').subscribe(() => {
+      this.post.comments = this.post.comments.filter(c => c.id !== commentId);
+    });
   }
 
 }

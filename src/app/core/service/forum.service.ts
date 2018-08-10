@@ -5,7 +5,7 @@ import {Observable} from 'rxjs';
 import {CategoryModel} from '../components/categories/category.model';
 import {PostsModel} from '../components/posts/posts.model';
 import {PostModel} from '../components/post/post.model';
-import {CommentModel} from '../components/comment/comment.model';
+import {ICommentModel} from '../components/comment/comment.model';
 
 @Injectable({providedIn: 'root'})
 export class ForumService {
@@ -25,13 +25,9 @@ export class ForumService {
     return this.http.get<PostModel>(`/api/forum/${categoryId}/${postId}`);
   }
 
-  postComment(categoryId: number, postId: number, comment: CommentModel): Observable<CommentModel> {
-    const options = {
-      headers: new HttpHeaders({
-        'Authorization': 'Bearer symbol',
-        'Content-Type': 'application/json; charset=utf-8'
-      })
-    };
-    return this.http.post<CommentModel>(`/api/forum/${categoryId}/${postId}/comments`, comment, options);
+  postComment(categoryId: number, postId: number, comment: ICommentModel): Observable<ICommentModel> {
+    const headers = new HttpHeaders().append('Authorization', 'Bearer symbol')
+      .append('Content-Type', 'application/json; charset=utf-8');
+    return this.http.post<ICommentModel>(`/api/forum/${categoryId}/${postId}/comments`, comment, {headers});
   }
 }

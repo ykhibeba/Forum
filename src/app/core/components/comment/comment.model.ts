@@ -1,16 +1,19 @@
 import {BasicModel} from '../../../shared/model/basic.model';
 
-export interface CommentModel extends BasicModel {
+export interface ICommentModel extends BasicModel {
   datetime: string;
   name: string;
   body: string;
 }
 
-export class CommentModelClass implements CommentModel {
+export class CommentModel implements ICommentModel {
   id: number;
   datetime: string;
   name: string;
+  body: string;
 
-  constructor(public body: string) {
+  constructor(id: number, body: string) {
+    this.id = id;
+    this.body = body;
   }
 }

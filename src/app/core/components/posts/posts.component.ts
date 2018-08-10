@@ -32,7 +32,7 @@ export class PostsComponent implements OnInit {
   }
 
   private loadPost(post: BasicModel): void {
-    this.router.navigate(['api/forum', this.categoryId, post.id]);
+    this.router.navigate(['forum', this.categoryId, post.id]);
   }
 
 }

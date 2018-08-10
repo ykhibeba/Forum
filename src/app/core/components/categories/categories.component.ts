@@ -28,6 +28,6 @@ export class CategoriesComponent implements OnInit {
   }
 
   private loadPosts(item: BasicModel): void {
-    this.router.navigate(['api/forum', item.id]);
+    this.router.navigate(['forum', item.id]);
   }
 }

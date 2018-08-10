@@ -1,31 +1,33 @@
-import {Component, Input, Output, EventEmitter, OnInit} from '@angular/core';
-import {CommentModel, CommentModelClass} from './comment.model';
-import {ForumService} from '../../service/forum.service';
+import {Component, Input, Output, EventEmitter, OnChanges, SimpleChanges} from '@angular/core';
+import {CommentModel, ICommentModel} from './comment.model';
 
+type CommentComponentModel = ICommentModel & { edit: boolean };
 
 @Component({
   selector: 'app-comment',
   templateUrl: './comment.component.html',
   styleUrls: ['./comment.component.scss']
 })
-export class CommentComponent implements OnInit {
+export class CommentComponent implements OnChanges {
 
-  @Input() comments: CommentModel[];
-  @Output() edit = new EventEmitter();
-  @Output() delete  = new EventEmitter();
+  @Input() comments: CommentComponentModel[];
+  @Output() save = new EventEmitter<ICommentModel>();
+  @Output() delete = new EventEmitter<number>();
 
-  constructor(private forumService: ForumService) {
+  ngOnChanges(changes: SimpleChanges): void {
+    if ('comments' in changes && this.comments) {
+      this.comments.filter(v => !('edit' in v))
+        .forEach(v => v['edit'] = false);
+    }
   }
 
-  ngOnInit() {
+  onSave(comment: CommentComponentModel, newValue: string): void {
+    comment.edit = false;
+    this.save.emit(new CommentModel(comment.id, newValue));
   }
 
-  private onEditComment(comment: CommentModel): void {
-    this.edit.emit(comment);
-  }
-
-  private onDeleteComment(comment: CommentModel): void {
-    this.delete.emit(comment);
+  onDeleteComment(comment: CommentComponentModel): void {
+    this.delete.emit(comment.id);
   }
 
 }
