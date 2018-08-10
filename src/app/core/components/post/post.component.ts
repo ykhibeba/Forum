@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {ForumService} from '../../service/forum.service';
 import {PostModelClass} from './post.model';
+import {CommentModel, CommentModelClass} from '../comment/comment.model';
 
 @Component({
   selector: 'app-post',
@@ -31,6 +32,21 @@ export class PostComponent implements OnInit {
   private loadPost(categoryId: number, postId: number): void {
     this.forumService.getPost(categoryId, postId)
       .subscribe(data => this.post = data);
+  }
+
+  private addComment(): void {
+    const comment = new CommentModelClass(this.comment);
+    this.forumService.postComment(this.categoryId, this.postId, comment)
+      .subscribe(newComment => this.post.comments.push(newComment));
+  }
+
+  private editComment(comment: CommentModel): void {
+    console.log(comment);
+    // this.forumService.postComment(this.categoryId, this.postId, this.comment);
+  }
+
+  private deleteComment(comment: CommentModel): void {
+    // this.forumService.postComment(this.categoryId, this.postId, this.comment);
   }
 
 }

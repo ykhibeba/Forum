@@ -1,4 +1,4 @@
-import {CommentModel} from '../comments/comments.model';
+import {CommentModel} from '../comment/comment.model';
 
 export interface PostModel extends CommentModel {
   title: string;

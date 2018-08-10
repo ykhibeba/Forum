@@ -14,7 +14,7 @@ import {PostsComponent} from './core/components/posts/posts.component';
 import {PostComponent} from './core/components/post/post.component';
 import {LoginComponent} from './core/components/login/login.component';
 import {PageNotFoundComponent} from './core/components/page-not-found/page-not-found.component';
-import { CommentsComponent } from './core/components/comments/comments.component';
+import {CommentComponent} from './core/components/comment/comment.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +24,7 @@ import { CommentsComponent } from './core/components/comments/comments.component
     LoginComponent,
     PageNotFoundComponent,
     PostsComponent,
-    CommentsComponent
+    CommentComponent
   ],
   imports: [
     BrowserModule,

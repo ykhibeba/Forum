@@ -16,5 +16,5 @@
     <button mat-button type="submit" [disabled]="commentForm.form.invalid">Add comment</button>
   </form>
 </mat-card>
-<app-comments [comments]="post?.comments"></app-comments>
+<app-comment [comments]="post?.comments" (edit)="editComment($event)" (delete)="deleteComment($event)"></app-comment>
 
