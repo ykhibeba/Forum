@@ -3,9 +3,10 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ForumService} from '../../service/forum.service';
 
 import {BasicModel} from '../../../shared/model/basic.model';
-import {CommentModel} from './comment.model';
 import {PostModel} from './post.model';
 import {PostModelClass} from './post.model';
+import {CommentModel} from './comment.model';
+import {CommentModelClass} from './comment.model';
 
 @Component({
   selector: 'app-post',
@@ -39,7 +40,8 @@ export class PostComponent implements OnInit {
   }
 
   private addComment(): void {
-    this.forumService.postComment(this.categoryId, this.postId, this.comment);
+    const comment = new CommentModelClass(this.comment);
+    this.forumService.postComment(this.categoryId, this.postId, comment);
   }
 
   private editComment(comment: CommentModel): void {
@@ -48,6 +50,6 @@ export class PostComponent implements OnInit {
   }
 
   private deleteComment(comment: CommentModel): void {
-    this.forumService.postComment(this.categoryId, this.postId, this.comment);
+    // this.forumService.postComment(this.categoryId, this.postId, this.comment);
   }
 }

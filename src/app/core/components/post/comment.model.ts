@@ -5,3 +5,12 @@ export interface CommentModel extends BasicModel {
   name: string;
   body: string;
 }
+
+export class CommentModelClass implements CommentModel {
+  id: number;
+  datetime: string;
+  name: string;
+
+  constructor(public body: string) {
+  }
+}
