@@ -1,7 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {ForumService} from '../../service/forum.service';
+
+import {BasicModel} from '../../../shared/model/basic.model';
+import {CommentModel} from './comment.model';
 import {PostModel} from './post.model';
+import {PostModelClass} from './post.model';
 
 @Component({
   selector: 'app-post',
@@ -12,10 +16,12 @@ export class PostComponent implements OnInit {
 
   categoryId: number;
   postId: number;
-  post: PostModel;
+  comment: string;
+  post = new PostModelClass();
 
   constructor(private forumService: ForumService,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private router: Router) {
     this.route.params
       .subscribe((params: { categoryId: string, postId: string }) => {
         this.categoryId = parseInt(params.categoryId, 10);
@@ -30,5 +36,18 @@ export class PostComponent implements OnInit {
   private loadPost(categoryId: number, postId: number): void {
     this.forumService.getPost(categoryId, postId)
       .subscribe(data => this.post = data);
+  }
+
+  private addComment(): void {
+    this.forumService.postComment(this.categoryId, this.postId, this.comment);
+  }
+
+  private editComment(comment: CommentModel): void {
+    console.log(comment);
+    // this.forumService.postComment(this.categoryId, this.postId, this.comment);
+  }
+
+  private deleteComment(comment: CommentModel): void {
+    this.forumService.postComment(this.categoryId, this.postId, this.comment);
   }
 }

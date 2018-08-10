@@ -7,6 +7,21 @@ mat-card {
   flex-direction: column;
 }
 
-.example-container > * {
+.example-container > * > * {
   width: 100%;
+}
+
+mat-card-footer {
+  display: flex;
+  flex-direction: row;
+}
+
+.control {
+  position: relative;
+}
+
+.controlButtons {
+  position: absolute;
+  top: -20px;
+  right: 0;
 }

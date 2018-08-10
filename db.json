@@ -47,6 +47,24 @@
           "datetime": "2018-07-18T12:35:00",
           "name": "Alexandr_Erohin",
           "body": "And how interesting are you to compare two objects using the \"==\" operator? To compare objects of course, you can overload this comparison operator (described here), but it's easier to use the built-in Object.Equals method.\r\n\r\nThose. the following code will give false, because the two objects do not know anything about each other:"
+        },
+        {
+          "id": 2,
+          "datetime": "2018-07-18T12:35:00",
+          "name": "Roman",
+          "body": "Test1"
+        },
+        {
+          "id": 3,
+          "datetime": "2018-07-18T12:35:00",
+          "name": "Yura",
+          "body": "Test2"
+        },
+        {
+          "id": 4,
+          "datetime": "2018-07-18T12:35:00",
+          "name": "Kolya",
+          "body": "Test3"
         }
       ]
     }
