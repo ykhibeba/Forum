@@ -1,0 +1,10 @@
+<mat-card *ngFor="let comment of comments">
+  <mat-card-content>{{comment.body}}</mat-card-content>
+  <mat-card-footer class="control">
+    {{comment.name}}: {{comment.datetime}}
+    <div class="controlButtons">
+      <button mat-icon-button (click)="editComment(comment)"><mat-icon>edit</mat-icon></button>
+      <button mat-icon-button (click)="deleteComment(comment)"><mat-icon>delete</mat-icon></button>
+    </div>
+  </mat-card-footer>
+</mat-card>
