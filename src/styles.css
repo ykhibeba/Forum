@@ -12,3 +12,7 @@ body {
 mat-card {
   cursor: pointer;
 }
+
+mat-card-footer {
+  padding-top: 10px;
+}

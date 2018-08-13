@@ -1,6 +1,6 @@
-import {BasicModel} from '../../../shared/model/basic.model';
+import {IBasicModel} from '../../../shared/model/basic.model';
 
-export interface PostsModel extends BasicModel {
+export interface IPostsModel extends IBasicModel {
   title: string;
   name: string;
   datetime: string;

@@ -2,8 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {ForumService} from '../../service/forum.service';
 
-import {BasicModel} from '../../../shared/model/basic.model';
-import {CategoryModel} from './category.model';
+import {IBasicModel} from '../../../shared/model/basic.model';
+import {ICategoryModel} from './category.model';
 
 @Component({
   selector: 'app-forum',
@@ -12,7 +12,7 @@ import {CategoryModel} from './category.model';
 })
 export class CategoriesComponent implements OnInit {
 
-  categories: CategoryModel[];
+  categories: ICategoryModel[];
 
   constructor(private forumService: ForumService,
               private router: Router) {
@@ -27,7 +27,7 @@ export class CategoriesComponent implements OnInit {
       .subscribe(data => this.categories = data);
   }
 
-  private loadPosts(item: BasicModel): void {
+  private loadPosts(item: IBasicModel): void {
     this.router.navigate(['forum', item.id]);
   }
 }

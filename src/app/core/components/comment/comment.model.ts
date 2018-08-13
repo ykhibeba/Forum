@@ -1,6 +1,6 @@
-import {BasicModel} from '../../../shared/model/basic.model';
+import {IBasicModel} from '../../../shared/model/basic.model';
 
-export interface ICommentModel extends BasicModel {
+export interface ICommentModel extends IBasicModel {
   datetime: string;
   name: string;
   body: string;

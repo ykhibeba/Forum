@@ -1,18 +1,16 @@
 <ng-container *ngFor="let comment of comments" [ngSwitch]="comment.edit">
-  <mat-card *ngSwitchCase="true">
-    <mat-card-content>
-      <input #control [value]="comment.body"/>
-    </mat-card-content>
+  <mat-card *ngSwitchCase="true" class="example-container">
+    <form #commentForm="ngForm">
+      <mat-form-field>
+        <textarea matInput #control type="text" name="comment" [value]="comment.body" placeholder="Comment" required></textarea>
+      </mat-form-field>
+      <div class="editControlButtons">
+        <button mat-button (click)="onSave(comment, control.value)" [disabled]="commentForm.form.invalid">Save</button>
+        <button mat-button (click)="comment.edit = false">Cancel</button>
+      </div>
+    </form>
     <mat-card-footer class="control">
       {{comment.name}}: {{comment.datetime}}
-      <div class="controlButtons">
-        <button mat-icon-button (click)="onSave(comment, control.value)">
-          <mat-icon>Save</mat-icon>
-        </button>
-        <button mat-icon-button (click)="comment.edit = false">
-          <mat-icon>Cancel</mat-icon>
-        </button>
-      </div>
     </mat-card-footer>
   </mat-card>
   <mat-card *ngSwitchCase="false">

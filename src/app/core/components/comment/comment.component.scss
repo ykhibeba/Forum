@@ -25,3 +25,12 @@ mat-card-footer {
   top: -20px;
   right: 0;
 }
+
+.editControlButtons {
+  display: flex;
+  flex-direction: row;
+}
+
+.editControlButtons > * {
+  flex-grow: 1;
+}

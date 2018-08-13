@@ -2,8 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ForumService} from '../../service/forum.service';
 
-import {BasicModel} from '../../../shared/model/basic.model';
-import {PostsModel} from './posts.model';
+import {IBasicModel} from '../../../shared/model/basic.model';
+import {IPostsModel} from './posts.model';
 
 @Component({
   selector: 'app-posts',
@@ -12,7 +12,7 @@ import {PostsModel} from './posts.model';
 })
 export class PostsComponent implements OnInit {
 
-  posts: PostsModel[];
+  posts: IPostsModel[];
   categoryId: number;
 
   constructor(private forumService: ForumService,
@@ -31,7 +31,7 @@ export class PostsComponent implements OnInit {
       .subscribe(data => this.posts = data);
   }
 
-  private loadPost(post: BasicModel): void {
+  private loadPost(post: IBasicModel): void {
     this.router.navigate(['forum', this.categoryId, post.id]);
   }
 

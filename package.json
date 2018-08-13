@@ -2,14 +2,14 @@
   "name": "forum",
   "version": "0.0.0",
   "scripts": {
-    "server": "json-server db.json --routes routes.json",
     "ng": "ng",
     "start": "ng serve",
     "start:proxy": "ng serve --proxy-config proxy.config.json",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "server": "json-server db.json --routes routes.json"
   },
   "private": true,
   "dependencies": {
