@@ -1,7 +1,7 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {LayoutModule} from '@angular/cdk/layout';
 import {MatInputModule, MatFormFieldModule} from '@angular/material';
@@ -16,6 +16,7 @@ import {CommentComponent} from './core/components/comment/comment.component';
 import {UserComponent} from './core/components/user/user.component';
 import {PageNotFoundComponent} from './core/components/page-not-found/page-not-found.component';
 import { TreeComponent } from './core/components/tree/tree.component';
+import {AuthInterceptor} from './core/config/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,9 @@ import { TreeComponent } from './core/components/tree/tree.component';
     MatTabsModule,
     MatFormFieldModule
   ],
-  providers: [],
+  providers: [
+    [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}]
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
