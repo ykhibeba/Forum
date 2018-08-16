@@ -10,7 +10,13 @@ export class PostModel implements IPostModel {
   title: string;
   datetime: string;
   name: string;
+  username: string;
   body: string;
   comments: ICommentModel[];
+
+  constructor(title?: string, body?: string) {
+    this.title = title;
+    this.body = body;
+  }
 }
 

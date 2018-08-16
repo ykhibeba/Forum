@@ -5,7 +5,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {LayoutModule} from '@angular/cdk/layout';
 import {MatInputModule, MatFormFieldModule} from '@angular/material';
-import {MatToolbarModule, MatSidenavModule, MatIconModule, MatListModule, MatButtonModule, MatCardModule, MatTreeModule} from '@angular/material';
+import {MatToolbarModule, MatSidenavModule, MatIconModule, MatListModule, MatButtonModule, MatCardModule, MatTreeModule, MatTabsModule} from '@angular/material';
 
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app.router';
@@ -43,6 +43,7 @@ import { TreeComponent } from './core/components/tree/tree.component';
     MatCardModule,
     MatInputModule,
     MatTreeModule,
+    MatTabsModule,
     MatFormFieldModule
   ],
   providers: [],
