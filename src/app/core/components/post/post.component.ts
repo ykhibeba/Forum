@@ -29,7 +29,7 @@ export class PostComponent implements OnInit {
 
   ngOnInit() {
     this.loadUserInfo();
-    this.loadPost(this.categoryId, this.postId);
+    this.loadPost();
   }
 
   private loadUserInfo() {
@@ -37,9 +37,8 @@ export class PostComponent implements OnInit {
       .subscribe(data => this.user = data);
   }
 
-  private loadPost(categoryId: number, postId: number): void {
-    this.forumService.getPost(categoryId, postId)
-      .subscribe(data => this.post = data);
+  private loadPost(categoryId: number = this.categoryId, postId: number = this.postId): void {
+    this.forumService.getPost(categoryId, postId).subscribe(data => this.post = data);
   }
 
   private addComment(): void {
@@ -51,17 +50,11 @@ export class PostComponent implements OnInit {
   }
 
   saveComment(comment: ICommentModel): void {
-    this.forumService.putComment(this.categoryId, this.postId, comment)
-      .subscribe(() => {
-        this.post.comments.find(c => c.id === comment.id).body = comment.body;
-      });
+    this.forumService.putComment(this.categoryId, this.postId, comment).subscribe(() => this.loadPost());
   }
 
   deleteComment(commentId: number): void {
-    this.forumService.deleteComment(this.categoryId, this.postId, commentId)
-      .subscribe(() => {
-        this.post.comments = this.post.comments.filter(c => c.id !== commentId);
-      });
+    this.forumService.deleteComment(this.categoryId, this.postId, commentId).subscribe(() => this.loadPost());
   }
 
 }
