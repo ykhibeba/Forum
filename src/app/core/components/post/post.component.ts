@@ -43,10 +43,7 @@ export class PostComponent implements OnInit {
 
   private addComment(): void {
     const comment = new CommentModel(null, this.comment);
-    this.forumService.postComment(this.categoryId, this.postId, comment)
-      .subscribe(newComment => {
-        this.post.comments = [...this.post.comments, newComment];
-      });
+    this.forumService.postComment(this.categoryId, this.postId, comment).subscribe(() => this.loadPost());
   }
 
   saveComment(comment: ICommentModel): void {
