@@ -1,0 +1,26 @@
+.example-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.example-container > * {
+  width: 100%;
+}
+
+.fullName {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.fullName > * {
+  flex-grow: 1;
+}
+
+.firstName {
+  margin-right: 10px;
+}
+
+.lastName {
+  margin-left: 10px;
+}

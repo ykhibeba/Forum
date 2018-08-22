@@ -1,0 +1,20 @@
+<form formGroup="user" (ngSubmit)="registerUser(); registrationForm.resetForm()" class="example-container" #registrationForm="ngForm">
+  <div class="fullName">
+    <mat-form-field class="firstName">
+      <input ngModel matInput type="text" placeholder="First Name" name="firstName" formControlName="firstName" required>
+    </mat-form-field>
+    <mat-form-field class="lastName">
+      <input ngModel matInput type="text" placeholder="Last Name" name="lastName" formControlName="lastName" required>
+    </mat-form-field>
+  </div>
+  <mat-form-field class="example-full-width">
+    <input ngModel matInput type="text" placeholder="User Name" name="userName" formControlName="userName" required>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input ngModel matInput type="email" placeholder="Email" name="email" formControlName="email" required>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input ngModel matInput type="password" placeholder="Password" name="password" formControlName="password" required>
+  </mat-form-field>
+  <button mat-button type="submit" [disabled]="registrationForm.form.invalid">Register</button>
+</form>
