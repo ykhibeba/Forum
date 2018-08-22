@@ -26,6 +26,8 @@ import {UserComponent} from './core/components/user/user.component';
 import {PageNotFoundComponent} from './core/components/page-not-found/page-not-found.component';
 import {TreeComponent} from './core/components/tree/tree.component';
 import {AuthInterceptor} from './core/config/auth.interceptor';
+import { RegistrationComponent } from './core/components/user/registration/registration.component';
+import { LoginComponent } from './core/components/user/login/login.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import {AuthInterceptor} from './core/config/auth.interceptor';
     PageNotFoundComponent,
     PostsComponent,
     CommentComponent,
-    TreeComponent
+    TreeComponent,
+    RegistrationComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
