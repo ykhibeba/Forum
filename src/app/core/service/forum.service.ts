@@ -2,6 +2,8 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 
+import {IUserModel} from '../components/user/user.model';
+import {ITreeModel} from '../components/tree/tree.model';
 import {ICategoryModel} from '../components/categories/category.model';
 import {IPostsModel} from '../components/posts/posts.model';
 import {IPostModel} from '../components/post/post.model';
@@ -11,6 +13,15 @@ import {ICommentModel} from '../components/comment/comment.model';
 export class ForumService {
 
   constructor(private http: HttpClient) {
+  }
+
+  getUserInfo(): Observable<IUserModel> {
+    const headers = new HttpHeaders().append('Content-Type', 'application/json; charset=utf-8');
+    return this.http.get<IUserModel>('/api/userinfo', {headers});
+  }
+
+  getTree(): Observable<ITreeModel[]> {
+    return this.http.get<ITreeModel[]>('/api/forum/titles');
   }
 
   getCategories(): Observable<ICategoryModel[]> {

@@ -1,5 +1,6 @@
 import {Component, Input, Output, EventEmitter, OnChanges, SimpleChanges} from '@angular/core';
 import {CommentModel, ICommentModel} from './comment.model';
+import {IUserModel} from '../user/user.model';
 
 type CommentComponentModel = ICommentModel & { edit: boolean };
 
@@ -10,6 +11,7 @@ type CommentComponentModel = ICommentModel & { edit: boolean };
 })
 export class CommentComponent implements OnChanges {
 
+  @Input() user: IUserModel;
   @Input() comments: CommentComponentModel[];
   @Output() save = new EventEmitter<ICommentModel>();
   @Output() delete = new EventEmitter<number>();

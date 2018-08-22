@@ -17,7 +17,7 @@
     <mat-card-content>{{comment.body}}</mat-card-content>
     <mat-card-footer class="control">
       {{comment.name}}: {{comment.datetime}}
-      <div class="controlButtons">
+      <div class="controlButtons" *ngIf="comment.username === user.username">
         <button mat-icon-button (click)="comment.edit = true">
           <mat-icon>edit</mat-icon>
         </button>

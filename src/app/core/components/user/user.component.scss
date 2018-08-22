@@ -16,13 +16,13 @@ mat-card {
   width: 100%;
 }
 
-.name {
+.fullName {
   width: 100%;
   display: flex;
   flex-direction: row;
 }
 
-.name > * {
+.fullName > * {
   flex-grow: 1;
 }
 

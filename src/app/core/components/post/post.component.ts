@@ -3,6 +3,7 @@ import {ActivatedRoute} from '@angular/router';
 import {ForumService} from '../../service/forum.service';
 import {PostModel} from './post.model';
 import {CommentModel, ICommentModel} from '../comment/comment.model';
+import {UserModel} from '../user/user.model';
 
 @Component({
   selector: 'app-post',
@@ -15,6 +16,7 @@ export class PostComponent implements OnInit {
   postId: number;
   comment: string;
   post = new PostModel();
+  user = new UserModel();
 
   constructor(private forumService: ForumService,
               private route: ActivatedRoute) {
@@ -26,7 +28,13 @@ export class PostComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.loadUserInfo();
     this.loadPost(this.categoryId, this.postId);
+  }
+
+  private loadUserInfo() {
+    this.forumService.getUserInfo()
+      .subscribe(data => this.user = data);
   }
 
   private loadPost(categoryId: number, postId: number): void {
@@ -39,9 +47,7 @@ export class PostComponent implements OnInit {
     this.forumService.postComment(this.categoryId, this.postId, comment)
       .subscribe(newComment => {
         this.post.comments = [...this.post.comments, newComment];
-        console.log(newComment);
       });
-    console.log(this.post.comments);
   }
 
   saveComment(comment: ICommentModel): void {
@@ -54,8 +60,8 @@ export class PostComponent implements OnInit {
   deleteComment(commentId: number): void {
     this.forumService.deleteComment(this.categoryId, this.postId, commentId)
       .subscribe(() => {
-      this.post.comments = this.post.comments.filter(c => c.id !== commentId);
-    });
+        this.post.comments = this.post.comments.filter(c => c.id !== commentId);
+      });
   }
 
 }

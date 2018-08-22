@@ -1,10 +1,10 @@
 <mat-card class="example-container">
-  <form (ngSubmit)="addPost(postTitle.value, postBody.value); postForm.reset()" #postForm="ngForm">
+  <form (ngSubmit)="addPost(postTitle.value, postBody.value); postForm.resetForm()" #postForm="ngForm">
     <mat-form-field class="postTitle">
-      <input matInput type="text" placeholder="Post Title" name="postTitle" #postTitle required>
+      <input ngModel matInput type="text" placeholder="Post Title" name="postTitle" #postTitle required>
     </mat-form-field>
     <mat-form-field class="postBody">
-      <textarea matInput type="text" placeholder="Post Body" name="postBody" #postBody required></textarea>
+      <textarea ngModel matInput type="text" placeholder="Post Body" name="postBody" #postBody required></textarea>
     </mat-form-field>
     <button mat-button type="submit" [disabled]="postForm.form.invalid">Add post</button>
   </form>
