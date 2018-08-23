@@ -1,8 +1,11 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {InterceptorSkipHeader} from '../config/auth.interceptor';
 
 import {IUserModel} from '../components/user/user.model';
+import {IRegistrationModel} from '../components/user/registration/registartion.model';
+import {ITokenModel} from '../components/user/login/token.model';
 import {ITreeModel} from '../components/tree/tree.model';
 import {ICategoryModel} from '../components/categories/category.model';
 import {IPostsModel} from '../components/posts/posts.model';
@@ -13,6 +16,16 @@ import {ICommentModel} from '../components/comment/comment.model';
 export class ForumService {
 
   constructor(private http: HttpClient) {
+  }
+
+  postUser(user: IRegistrationModel): Observable<any> {
+    const headers = new HttpHeaders().append('Content-Type', 'application/json; charset=utf-8');
+    return this.http.post('api/user/register', user, {headers});
+  }
+
+  postToken(user): Observable<ITokenModel> {
+    const headers = new HttpHeaders().set(InterceptorSkipHeader, '').append('Content-Type', 'application/x-www-form-urlencoded');
+    return this.http.post<ITokenModel>('token', user, {headers});
   }
 
   getUserInfo(): Observable<IUserModel> {

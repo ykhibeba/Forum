@@ -1,1 +1,11 @@
-
+<form
+  (ngSubmit)="getToken(userName.value,  password.value); loginForm.resetForm()"
+  class="example-container" #loginForm="ngForm">
+  <mat-form-field class="example-full-width">
+    <input ngModel matInput type="text" placeholder="User Name" name="userName" #userName required>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input ngModel matInput type="password" placeholder="Password" name="password" #password required>
+  </mat-form-field>
+  <button mat-button type="submit" [disabled]="loginForm.form.invalid">Register</button>
+</form>

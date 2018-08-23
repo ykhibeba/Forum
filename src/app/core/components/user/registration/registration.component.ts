@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Validators, FormBuilder, FormGroup, FormControl} from '@angular/forms';
+import {IRegistrationModel, RegistrationModel} from './registartion.model';
+import {ForumService} from '../../../service/forum.service';
 
 @Component({
   selector: 'app-registration',
@@ -7,23 +9,16 @@ import {Validators, FormBuilder, FormGroup, FormControl} from '@angular/forms';
   styleUrls: ['./registration.component.scss']
 })
 export class RegistrationComponent implements OnInit {
-  user = new FormGroup({
-    firstName: new FormControl('1111', Validators.required),
-    lastName: new FormControl('', Validators.required),
-    userName: new FormControl('', Validators.required),
-    email: new FormControl('', Validators.required),
-    password: new FormControl('', Validators.compose([
-      Validators.minLength(6),
-      Validators.pattern('/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^\\w\\s]).{6,}/')
-    ]))
-  });
 
-  constructor() {
+  constructor(private forumService: ForumService) {
   }
 
   ngOnInit() {
   }
 
-  private registerUser(): void {
+  private registerUser(firstName: string, lastName: string, userName: string, email: string,  password: string): void {
+    const user = new RegistrationModel(firstName, lastName, userName, email,  password);
+    this.forumService.postUser(user)
+      .subscribe();
   }
 }

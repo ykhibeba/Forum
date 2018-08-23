@@ -19,11 +19,11 @@ export class SecurityLocalStorageService {
 }
 
 export class UserInfoInLocalStorage {
-  username: string;
-  refreshToken: string;
+  access_token: string;
+  expires_in: number;
+  token_type: string;
 
-  constructor(username: string, refreshToken: string) {
-    this.username = username;
-    this.refreshToken = refreshToken;
+  constructor(access_token: string) {
+    this.access_token = access_token;
   }
 }
