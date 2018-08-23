@@ -27,7 +27,7 @@ export class CategoriesComponent implements OnInit {
       .subscribe(data => this.categories = data);
   }
 
-  private loadPosts(item: IBasicModel): void {
+  loadPosts(item: IBasicModel): void {
     this.router.navigate(['forum', item.id]);
   }
 }

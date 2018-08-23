@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  private getToken(userName: string, password: string): void {
+  getToken(userName: string, password: string): void {
     const user = 'grant_type=password&username=' + userName + '&password=' + password;
     this.forumService.postToken(user)
       .subscribe(data => SecurityLocalStorageService.setCurrentUser(data));

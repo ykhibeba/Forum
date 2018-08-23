@@ -1,4 +1,5 @@
 import {LocalStorageService} from './local-storage.service';
+import {ITokenModel} from '../components/user/login/token.model';
 
 export class SecurityLocalStorageService {
 
@@ -18,7 +19,7 @@ export class SecurityLocalStorageService {
 
 }
 
-export class UserInfoInLocalStorage {
+export class UserInfoInLocalStorage implements ITokenModel {
   access_token: string;
   expires_in: number;
   token_type: string;

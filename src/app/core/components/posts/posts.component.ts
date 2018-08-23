@@ -42,17 +42,17 @@ export class PostsComponent implements OnInit {
       .subscribe(data => this.posts = data);
   }
 
-  private loadPost(post: IPostsModel): void {
+  loadPost(post: IPostsModel): void {
     this.router.navigate(['forum', this.categoryId, post.id]);
   }
 
-  private addPost(postTitle: string, postBody: string): void {
+  addPost(postTitle: string, postBody: string): void {
     const post = new PostModel(postTitle, postBody);
     this.forumService.postPost(this.categoryId, post)
       .subscribe(newComment => this.posts = [...this.posts, newComment]);
   }
 
-  private deletePost(post: IPostsModel): void {
+  deletePost(post: IPostsModel): void {
     this.forumService.deletePost(this.categoryId, post.id)
       .subscribe(() => {
         this.posts = this.posts.filter(c => c.id !== post.id);
