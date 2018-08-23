@@ -10,8 +10,8 @@ export class AuthInterceptor implements HttpInterceptor {
   private token = 'Bearer ';
 
   constructor() {
-    this.token = this.token + SecurityLocalStorageService.getCurrentUser().access_token;
-    console.log(this.token);
+    this.token = this.token +
+      (SecurityLocalStorageService.getCurrentUser() ? SecurityLocalStorageService.getCurrentUser().access_token : '');
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
