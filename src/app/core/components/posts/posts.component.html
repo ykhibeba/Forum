@@ -13,7 +13,7 @@
   <mat-card-title>{{item.title}}</mat-card-title>
   <mat-card-footer class="control">
     {{item.name}}: {{item.datetime}}
-    <button mat-icon-button (click)="deletePost(item)">
+    <button mat-icon-button *ngIf="item.username === user.username" (click)="deletePost(item)">
       <mat-icon>delete</mat-icon>
     </button>
   </mat-card-footer>

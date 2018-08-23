@@ -5,6 +5,7 @@ import {ForumService} from '../../service/forum.service';
 import {IBasicModel} from '../../../shared/model/basic.model';
 import {IPostsModel} from './posts.model';
 import {PostModel} from '../post/post.model';
+import {UserModel} from '../user/user.model';
 
 
 @Component({
@@ -16,6 +17,7 @@ export class PostsComponent implements OnInit {
 
   posts: IPostsModel[];
   categoryId: number;
+  user = new UserModel();
 
   constructor(private forumService: ForumService,
               private route: ActivatedRoute,
@@ -25,8 +27,15 @@ export class PostsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.loadUserInfo();
     this.loadPosts(this.categoryId);
   }
+
+  private loadUserInfo() {
+    this.forumService.getUserInfo()
+      .subscribe(data => this.user = data);
+  }
+
 
   private loadPosts(categoryId: number): void {
     this.forumService.getPosts(categoryId)
