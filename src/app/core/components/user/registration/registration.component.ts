@@ -19,5 +19,6 @@ export class RegistrationComponent implements OnInit {
     const user = new RegistrationModel(firstName, lastName, userName, email,  password);
     this.forumService.postUser(user)
       .subscribe();
+    alert('Вітаємо! Вас зареєстровано, будь ласка увійдіть в свій акаунт');
   }
 }
