@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 import {ForumService} from '../../../service/forum.service';
 import {SecurityLocalStorageService} from '../../../service/security-local-storage.service';
 
@@ -9,7 +10,8 @@ import {SecurityLocalStorageService} from '../../../service/security-local-stora
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private forumService: ForumService) {
+  constructor(private forumService: ForumService,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -19,6 +21,8 @@ export class LoginComponent implements OnInit {
     const user = 'grant_type=password&username=' + userName + '&password=' + password;
     this.forumService.postToken(user)
       .subscribe(data => SecurityLocalStorageService.setCurrentUser(data));
+    alert('Ви ввійшли на форум');
+    this.router.navigate(['forum']);
   }
 
 }
